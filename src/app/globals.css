@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #ff0000;
+  --text-color: #282828;
+}
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-weight: 200;
+  font-size: 20px;
+
+}
+body{
+  color: #282828;
+}
+.my-input{
+  @apply w-full p-2 px-3  border border-red-500 bg-white rounded-[15px]  placeholder:text-[#28282880] outline-none my-1  text-lg h-[53px]
+}
+.my-submit{
+  @apply w-full p-2  bg-[#f21055] rounded-xl text-white text-lg mt-8 font-light border hover:text-[#f21055] hover:bg-white hover:border-[#f21055]  outline-none disabled:opacity-65
+}
+.my-hover{
+  @apply transition-all duration-300 ease-in cursor-pointer
+}
+
+.my-input:focus~.lable-input
+{
+  @apply top-[-20px] text-blue-700 
+}
+.my-input:valid~.lable-input
+{
+  @apply top-[-20px]  
+}
+.lable-input{
+  @apply absolute right-[6px] top-3 transition-all duration-300 bg-gray-100 
+  
+}
+.my-input:focus{
+ @apply border-blue-700 
+}
+.form-input-book{
+  @apply w-56 rounded-md p-1 px-2 font-light shadow-sm
+}
+.my-icons{
+ @apply flex items-center gap-1  justify-center
+}
+.header-li{
+  @apply w-fit relative my-hover
+}
+.header-li::before{
+ content: "";
+ @apply absolute inline-block w-0 h-[2px] bottom-[-2px] right-0 my-hover bg-white
+}
+.header-li:hover::before{
+  @apply w-full
+}

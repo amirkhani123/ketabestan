@@ -24,7 +24,6 @@ function AddBookT() {
         categories:""
     });
     const [categories,setCategories]=useState<Icategories[]>();
-    console.log(categories)
     useEffect(()=>{
         async function fetchData(){
            const response=await fetch("/api/book/categories");

@@ -18,6 +18,17 @@
 body{
   color: #282828;
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background-color: rgb(255, 255, 255);
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(255, 0, 0);
+  border-radius: 10px;
+}
+@layer components{
 .my-input{
   @apply w-full p-2 px-3  border border-red-500 bg-white rounded-[15px]  placeholder:text-[#28282880] outline-none my-1  text-lg h-[53px]
 }
@@ -58,4 +69,5 @@ body{
 }
 .header-li:hover::before{
   @apply w-full
+}
 }

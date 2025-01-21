@@ -14,7 +14,8 @@ export default {
         "text-color": "var(--text-color)",
       },
       boxShadow:{
-        "3xl":"0px 0px 13px -5px rgba(255,0,0,1)"
+        "3xl":"0px 0px 13px -5px rgba(255,0,0,1)",
+        "gray":"1px 1px 5px 0px rgba(184,184,184,1)"
       },
       animation:{
         spin: 'spin 1.5s linear infinite ',

@@ -1,5 +1,7 @@
 "use client"
 
+import CategoriesLi from '@/components/modules/CategoriesLi';
+import Loading from '@/components/ui/Loading';
 import { Icategories } from '@/interface/interfaces';
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image';
@@ -16,13 +18,16 @@ function Header() {
   const session=useSession();
   const [isShowMenu,setIsShowMenu]=useState(false);
   const [categories,setCategories]=useState<Icategories[]>([]);
+  const [isLoading,setIsloading]=useState(false);
   useEffect(()=>{
     const customFetch=async()=>{
       try {
         if(!categories?.length){
-        const response=await fetch("/api/book/categories");
-        const data =await response.json();
+          setIsloading(true);
+          const response=await fetch("/api/book/categories");
+          const data =await response.json();
           setCategories(data.data);
+          setIsloading(false);
         }
       } catch {
         toast.error("مشکلی در برقراری ارتباط");
@@ -31,17 +36,15 @@ function Header() {
   customFetch();
   },[categories])
   return (
-    <header className='w-full h-12 flex items-center justify-between py-1 px-2 my-5 bg-red-600 text-white rounded-lg'>
+    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg'>
         <ul className='flex items-center gap-2'>
             <li className='my-hover header-li'><Link href="/">صفحه اصلی</Link></li>
-            <li className='my-hover header-li'><Link href="/"> کتاب ها</Link></li>
+            <li className='my-hover header-li'><Link href="/books"> کتاب ها</Link></li>
             <li  onMouseEnter={()=>setIsShowMenu(true)} onMouseLeave={()=>{setIsShowMenu(false)}}><Link href="/" className='my-icons'> دسته بندی  <IoIosArrowDown /> </Link>
             {isShowMenu && (
             <ul className="absolute bg-red-500 shadow-2xl shadow-red-300 rounded-xl w-44 min-h-22 p-2 opacity-0 animate-show">
               {
-                categories?.map((category, index) => (
-                  <li className='header-li ' key={category._id}><Link href="/category">{category.name}</Link></li>
-                ))
+                isLoading ? (<Loading/>):(   <CategoriesLi categories={categories} />)
               }
             </ul>
             )}

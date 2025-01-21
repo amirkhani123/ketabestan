@@ -23,13 +23,14 @@ interface Iuser{
       _id: string,
 }
 interface IBook{
+    _id?:string,
     name:string,
     price:number,
     author:string,
     publisher:string,
     numberpage:number,
     datepublish:Date ,
-    image:string | undefined,
+    image:string ,
     categories:string
 }
 interface Icategories{

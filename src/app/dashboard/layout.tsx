@@ -1,10 +1,11 @@
 import DashboardLayout from "@/components/layouts/DashboardLayout";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+
 import { redirect } from "next/navigation";
 import UserM from "@/models/UserM";
 import Link from "next/link";
 import connectDB from "@/connections/connectDB";
+import { authOptions } from "@/utils/auth";
 export default async function layout({
     children,
   }: Readonly<{

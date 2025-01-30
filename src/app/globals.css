@@ -32,9 +32,7 @@ body{
 .my-input{
   @apply w-full p-2 px-3  border border-red-500 bg-white rounded-[15px]  placeholder:text-[#28282880] outline-none my-1  text-lg h-[53px]
 }
-.my-submit{
-  @apply w-full p-2  bg-[#f21055] rounded-xl text-white text-lg mt-8 font-light border hover:text-[#f21055] hover:bg-white hover:border-[#f21055]  outline-none disabled:opacity-65
-}
+
 .my-hover{
   @apply transition-all duration-300 ease-in cursor-pointer
 }
@@ -69,5 +67,28 @@ body{
 }
 .header-li:hover::before{
   @apply w-full
+}
+.hover-li{
+  @apply w-fit relative my-hover
+}
+.hover-li::before{
+ content: "";
+ @apply absolute inline-block w-0 h-[2px] bottom-[-2px] right-0 my-hover bg-red-500
+}
+.hover-li:hover::before{
+  @apply w-full
+}
+.hover-li-static{
+  @apply w-fit relative 
+}
+.hover-li-static::before{
+  content: "";
+  @apply absolute inline-block w-full h-[2px] bottom-[-2px] right-0 my-hover bg-red-500
+}
+.but-green{
+  @apply p-1 px-2 rounded-md bg-green-500 text-white border my-hover hover:text-green-500 hover:bg-white hover:border-green-500 mr-2 my-hover
+}
+.my-submit{
+  @apply w-full p-2  bg-[#f21055] rounded-xl text-white text-lg mt-8 font-light border hover:text-[#f21055] hover:bg-white hover:border-[#f21055]  outline-none disabled:opacity-65 my-hover 
 }
 }

@@ -9,10 +9,10 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
 import CategoriesLable from "../ui/CategoriesLable";
 import Loading from "../ui/Loading";
-import { IBook, Icategories } from "@/interface/interfaces";
+import { IApi, IBook, Icategories } from "@/interface/interfaces";
 
 
-function AddBookT() {
+function AddBookT({data}:{data?:IBook}) {
     const [formValue,setFormvalue]=useState<IBook>({
         name:"",
         price:0,
@@ -21,23 +21,26 @@ function AddBookT() {
         numberpage:0,
         datepublish:new Date(),
         image:"",
-        categories:""
+        category:""
     });
     const [categories,setCategories]=useState<Icategories[]>();
     useEffect(()=>{
+        if(data){
+            setFormvalue(data);
+        }
         async function fetchData(){
            const response=await fetch("/api/book/categories");
-           const data=await response.json();
-           if(data.data){
-               setCategories(data.data);
+           const result=await response.json();
+           if(result.data){
+               setCategories(result.data);
            }else{
-            toast.error(data.message)
+            toast.error(result.message);
            }
         }
         fetchData();
     },[])
     const changeEvent=(e:React.ChangeEvent<HTMLInputElement>)=>{
-        if(e.target.name=="categories"){
+        if(e.target.name=="category"){
             setFormvalue(formValue=>({...formValue,[e.target.name]:e.target.id}));
         }else{
             setFormvalue(formValue=>({...formValue,[e.target.name]:e.target.value}));
@@ -47,13 +50,24 @@ function AddBookT() {
     const setdata=(e)=>{
         setFormvalue(formValue=>({...formValue,datepublish:new Date(e)}));
     }
+    const editHandler=async()=>{
+        const res=await fetch(`/api/book/${data?._id}`,{
+            method:"PUT",
+            body:JSON.stringify(formValue),
+            headers:{"Content-Type":"application/json"}
+        });
+        const result=await res.json() as IApi;
+        if(result.status=="success"){
+            toast.success(result.message)
+        }
+    }
       const addBook=async()=>{
         const result=await fetch("/api/book/add-book",{
             method:"POST",
             body:JSON.stringify(formValue),
             headers:{"Content-Type":"application/json"}
         });
-        const json=await result.json();
+        const json=await result.json() as IApi;
         if(json.status=="failed"){
             toast.error(json.message);
         }else{
@@ -98,9 +112,14 @@ function AddBookT() {
         {
             formValue?.image && <img src={formValue.image} className="w-24 rounded-lg shadow-2xl my-2" alt="image.png" />
         }
-        <button className="w-52  bg-white text-green-500 rounded-md my-hover border border-green-500 my-icons hover:opacity-50" onClick={addBook} >
-        <IoIosAddCircleOutline /> ثبت کتاب 
-        </button>
+        {
+            data? ( <button className="w-52  bg-white text-green-500 rounded-md my-hover border border-green-500 my-icons hover:opacity-50" onClick={editHandler} >
+                <IoIosAddCircleOutline /> ویرایش
+                </button>):( <button className="w-52  bg-white text-green-500 rounded-md my-hover border border-green-500 my-icons hover:opacity-50" onClick={addBook} >
+                <IoIosAddCircleOutline /> ثبت کتاب 
+                </button>)
+        }
+       
   </div>
   )
 }

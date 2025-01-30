@@ -31,12 +31,15 @@ interface IBook{
     numberpage:number,
     datepublish:Date ,
     image:string ,
-    categories:string
+    category:string
 }
 interface Icategories{
     name:string,
    _id:string
 }
+interface IApi{
+    status:string,
+    message:string
+}
 
-
-export type {Iformdata,IuserData,Iuser,Icategories,IBook}
+export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi}

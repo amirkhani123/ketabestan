@@ -9,7 +9,7 @@ async function BooksT({allBooks}:Iprops) {
   return (
     <div className="flex gap-3">
       <SideBarBooks/>
-      <div className="flex gap-3 flex-wrap items-center">
+      <div className="flex gap-3 flex-wrap items-center w-[85%]">
            {
              allBooks.map((book)=>(
                <RenderBooks key={book._id} book={book} />

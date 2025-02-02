@@ -9,7 +9,7 @@ function Banner() {
         <p className="font-normal ">دانش در دسترس هر ایرانی</p>
         </div>
         <div>
-            <Image src="/images/banner.png" alt="banner.png" width={300} height={300} className="rounded-md " />
+            <Image src="/images/banner.png" alt="banner.png" width={300} height={300} className="rounded-md " loading="eager" />
         </div>
     </div>
   )

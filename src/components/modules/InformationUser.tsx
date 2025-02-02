@@ -6,7 +6,6 @@ interface Iprops{
     user:Iuser,
 }
 function InformationUser({user}:Iprops) {
-  
    const [isEdit,setIsEdit]=useState(false);
    const information={
     firstname:user.firstname,

@@ -3,10 +3,11 @@
 import CategoriesLi from '@/components/modules/CategoriesLi';
 import Loading from '@/components/ui/Loading';
 import { Icategories } from '@/interface/interfaces';
+import { useGetCart } from '@/redux/fetures/cartSlice';
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image';
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';
 import { GoSignIn } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -15,6 +16,7 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import { TbLogout } from 'react-icons/tb';
 
 function Header() {
+  const state=useGetCart();
   const session=useSession();
   const [isShowMenu,setIsShowMenu]=useState(false);
   const [categories,setCategories]=useState<Icategories[]>([]);
@@ -53,9 +55,10 @@ function Header() {
         </ul>
         <div>
              {session.status=="authenticated" ? (<div className='flex gap-1 items-center  rounded-lg px-1'>
-                <Link href="/" className='p-1 cursor-pointer flex justify-center items-center bg-white rounded-md text-center my-hover hover:opacity-60'>
+                <Link href="/cart" className='p-1 cursor-pointer flex justify-center items-center bg-white rounded-md text-center my-hover hover:opacity-60 relative'>
                 <IoBagHandle color='#2d3439' size={35} />
-                </Link>
+               {state.totalQty>=1 &&  <span className='text-white rounded-lg size-5 absolute top-[-10px] right-[-10px] bg-red-500 '>{state.totalQty}</span>}
+                </Link> 
                 <Link href="/dashboard" className='p-1 cursor-pointer flex justify-center items-center bg-white rounded-md text-center my-hover hover:opacity-60 '>
                 <MdOutlineAccountCircle size={35} color='gray' />
                 </Link>

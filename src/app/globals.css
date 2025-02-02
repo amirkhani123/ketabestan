@@ -39,15 +39,14 @@ body{
 
 .my-input:focus~.lable-input
 {
-  @apply top-[-20px] text-blue-700 
+  @apply top-[-25px] text-blue-700 bg-[#F3F4F6]
 }
 .my-input:valid~.lable-input
 {
-  @apply top-[-20px]  
+  @apply top-[-25px]  bg-[#F3F4F6] text-black
 }
 .lable-input{
-  @apply absolute right-[6px] top-3 transition-all duration-300 bg-gray-100 
-  
+  @apply absolute right-[6px] top-3 transition-all duration-300 bg-white
 }
 .my-input:focus{
  @apply border-blue-700 

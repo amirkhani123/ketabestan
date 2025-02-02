@@ -31,7 +31,9 @@ interface IBook{
     numberpage:number,
     datepublish:Date ,
     image:string ,
-    category:string
+    category:string,
+    codebook:number,
+    qty:number
 }
 interface Icategories{
     name:string,
@@ -41,5 +43,9 @@ interface IApi{
     status:string,
     message:string
 }
-
-export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi}
+interface IstateCard{
+    books:IBook[],
+    totalQty:number,
+    totalPrice:number
+}
+export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard}

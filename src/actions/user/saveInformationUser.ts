@@ -1,10 +1,11 @@
 "use server"
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
 import connectDB from "@/connections/connectDB";
 import { IuserData } from "@/interface/interfaces"
 import UserM from "@/models/UserM";
+import { authOptions } from "@/utils/auth";
 import mongoose from "mongoose";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next";
 
 const saveInformationUserAction=async(data:IuserData)=>{
     try {

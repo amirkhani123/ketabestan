@@ -1,10 +1,10 @@
 import { setTotalprice, setTotalQty } from "@/helper/helpers";
-import { IBook, IstateCard, Iuser } from "@/interface/interfaces"
+import { IBook, IstateCard } from "@/interface/interfaces"
 import {  createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import toast from "react-hot-toast";
-let initialState: IstateCard ={
+const initialState: IstateCard ={
     books: [],
     totalQty: 0,
     totalPrice: 0

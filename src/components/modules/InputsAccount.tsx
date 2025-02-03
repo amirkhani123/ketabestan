@@ -21,7 +21,7 @@ function InputsAccount({userId,information}:Iprops) {
     if(information){
      setFormData(information);
     }
-  },[])
+  },[router]);
   const changeHandler=(e: React.ChangeEvent<HTMLInputElement>)=>{
     setFormData(form=>({...form,[e.target.name]:e.target.value}));
   }

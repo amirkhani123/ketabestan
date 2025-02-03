@@ -15,7 +15,7 @@ function CartT({myUser}:{myUser:Iuser}) {
         <div className="w-[70%] min-h-[250px] p-1 shadow-gray rounded-lg">{!state.books.length ? ( <p className="w-full text-center font-light text-lg mt-3">هیچ کتابی یافت نشد !</p>): (
             state.books.map((book:IBook)=>(
                 <div key={book._id} className="w-full flex items-center justify-between pl-2 h-[100px] rounded-lg shadow-gray overflow-hidden my-1">
-                  <Image src={book.image} alt="image.png" width={100} height={200} loading="eager" placeholder="blur" blurDataURL="/images/loading.png"/>
+                  <Image src={book.image} alt="image.png" width={100} objectFit="cover" height={200} loading="eager" placeholder="blur" blurDataURL="/images/loading.png"/>
                   <p className="font-light text-lg">{book.name}</p>
                   <p className="text-center  text-gray-700 font-normal text-lg mt-1">{book.price.toLocaleString("fa-ir")} تومان</p>
                   <div className="w-[150px] h-[35px] text-white" >

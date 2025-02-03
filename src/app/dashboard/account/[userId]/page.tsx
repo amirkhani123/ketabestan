@@ -6,9 +6,8 @@ import mongoose from 'mongoose';
 import Link from 'next/link';
 import React from 'react'
 interface Iprops{
-  params:{
-    userId:string
-  }
+  params:Promise<{userId:string}>,
+  searchParams:Promise<string>,
 }
 async function AccountPage({params}:Iprops) {
   let {userId}=await params;

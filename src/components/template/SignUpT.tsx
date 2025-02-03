@@ -14,7 +14,7 @@ function SignUpT() {
   const {status}=useSession();
   useEffect(()=>{
     if(status=="authenticated")router.replace("/");
-  },[status]);
+  },[status,router]);
     const [isShow,setIsShow]=useState(false);
     const submitHandler=async(e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault();

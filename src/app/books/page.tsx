@@ -3,9 +3,10 @@ import connectDB from "@/connections/connectDB"
 import BookM from "@/models/BookM";
 import BooksT from "@/components/template/BooksT"
 import { IBook } from "@/interface/interfaces";
-async function page({searchParams}:{searchParams:{
-  category:string
-}}) {
+interface Iprops{
+searchParams:Promise<{category:string}>
+}
+async function page({searchParams}:Iprops) {
     let allBooks=[];
     const {category}=await searchParams;
         await connectDB();

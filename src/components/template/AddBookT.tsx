@@ -10,10 +10,16 @@ import toast from "react-hot-toast";
 import CategoriesLable from "../ui/CategoriesLable";
 import Loading from "../ui/Loading";
 import { IApi, IBook, Icategories } from "@/interface/interfaces";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-
+interface IcloudinaryUploadWidgetInfo {
+    secure_url: string;
+  
+  }
 function AddBookT({data}:{data?:IBook}) {
-    const [formValue,setFormvalue]=useState<IBook>({
+    const router=useRouter();
+    const [formValue,setFormvalue]=useState({
         name:"",
         price:0,
         author:"",
@@ -38,7 +44,7 @@ function AddBookT({data}:{data?:IBook}) {
            }
         }
         fetchData();
-    },[])
+    },[router])
     const changeEvent=(e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name=="category"){
             setFormvalue(formValue=>({...formValue,[e.target.name]:e.target.id}));
@@ -106,11 +112,14 @@ function AddBookT({data}:{data?:IBook}) {
         style={{textAlign:"center",cursor:"pointer"}}
         name="date"
         />
-        <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET} onSuccess={(result) => setFormvalue((formValue)=>({...formValue,image:result?.info?.secure_url   }))} > 
+        <CldUploadWidget uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET} onSuccess={(result) => {
+  const info = (result.info as IcloudinaryUploadWidgetInfo).secure_url;
+  setFormvalue((formValue) => ({ ...formValue, image: info }));
+}} > 
             {({ open }) => ( <button type="button" className="w-52 bg-green-500 text-white rounded-md my-hover hover:opacity-50 my-icons" onClick={() => open()}> <MdOutlineCloudUpload /> آپلود عکس  </button> )} 
         </CldUploadWidget>
         {
-            formValue?.image && <img src={formValue.image} className="w-24 rounded-lg shadow-2xl my-2" alt="image.png" />
+            formValue?.image && <Image src={formValue.image} width={150} height={100} className="w-24 rounded-lg shadow-2xl my-2" alt="image.png" />
         }
         {
             data? ( <button className="w-52  bg-white text-green-500 rounded-md my-hover border border-green-500 my-icons hover:opacity-50" onClick={editHandler} >

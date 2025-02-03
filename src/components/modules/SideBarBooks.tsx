@@ -3,14 +3,13 @@ import { Icategories } from "@/interface/interfaces"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Loading from "../ui/Loading";
-import { useRouter } from "next/router";
 import { useSearchParams } from "next/navigation";
 
 
 function SideBarBooks() {
     const [allCategories,setAllCategories]=useState<Icategories[]>([]);
     const [isLoading,setIsLoading]=useState(false);
-   const [searchParams,setSearchParams]=useSearchParams();
+   const [searchParams]=useSearchParams();
    let selectCategory="all";
    if(searchParams){
        selectCategory=searchParams[1];

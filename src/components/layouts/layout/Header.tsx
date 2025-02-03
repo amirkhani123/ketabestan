@@ -5,7 +5,6 @@ import Loading from '@/components/ui/Loading';
 import { Icategories } from '@/interface/interfaces';
 import { useGetCart } from '@/redux/fetures/cartSlice';
 import { signOut, useSession } from 'next-auth/react'
-import Image from 'next/image';
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast';

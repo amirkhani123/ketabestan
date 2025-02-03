@@ -12,7 +12,7 @@ function SignInT() {
   const [isLoading,setIsLoading]=useState(false);
   useEffect(()=>{
     if(status=="authenticated")router.replace("/");
-  },[status]);
+  },[status,router]);
     const [isShow,setIsShow]=useState(false);
     const [formValue,setFormValue]=useState({
       username:"",

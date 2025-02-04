@@ -7,7 +7,7 @@ import { IuseCategories } from '@/interface/interfaces';
 import { useGetCart } from '@/redux/fetures/cartSlice';
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import toast from 'react-hot-toast';
 import { GoSignIn } from 'react-icons/go';
 import { IoIosArrowDown } from 'react-icons/io';

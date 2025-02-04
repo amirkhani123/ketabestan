@@ -15,7 +15,6 @@ import { useRouter } from "next/navigation";
 
 interface IcloudinaryUploadWidgetInfo {
     secure_url: string;
-  
   }
 function AddBookT({data}:{data?:IBook}) {
     const router=useRouter();
@@ -44,7 +43,7 @@ function AddBookT({data}:{data?:IBook}) {
            }
         }
         fetchData();
-    },[router])
+    },[router,data])
     const changeEvent=(e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name=="category"){
             setFormvalue(formValue=>({...formValue,[e.target.name]:e.target.id}));
@@ -119,7 +118,7 @@ function AddBookT({data}:{data?:IBook}) {
             {({ open }) => ( <button type="button" className="w-52 bg-green-500 text-white rounded-md my-hover hover:opacity-50 my-icons" onClick={() => open()}> <MdOutlineCloudUpload /> آپلود عکس  </button> )} 
         </CldUploadWidget>
         {
-            formValue?.image && <Image src={formValue.image} width={150} height={100} className="w-24 rounded-lg shadow-2xl my-2" alt="image.png" />
+            formValue?.image && <Image src={formValue.image} width={120} height={100} className="w-24 rounded-lg shadow-2xl my-2" alt="image.png" />
         }
         {
             data? ( <button className="w-52  bg-white text-green-500 rounded-md my-hover border border-green-500 my-icons hover:opacity-50" onClick={editHandler} >

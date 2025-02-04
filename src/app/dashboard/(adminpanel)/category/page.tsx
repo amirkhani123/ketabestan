@@ -3,7 +3,7 @@ import AddCategory from "@/components/modules/AddCategory";
 import ShowCategory from "@/components/modules/ShowCategory";
 import Mcategory from "@/models/Mcategory"
 
-async function page() {
+async function CategoryPage() {
     
     const categories= JSON.parse(JSON.stringify( await Mcategory.find()));
   return (
@@ -14,4 +14,4 @@ async function page() {
   )
 }
 
-export default page
+export default CategoryPage

@@ -2,7 +2,8 @@
 
 import CategoriesLi from '@/components/modules/CategoriesLi';
 import Loading from '@/components/ui/Loading';
-import { Icategories } from '@/interface/interfaces';
+import {  useCategories } from '@/hooks/hooks';
+import { IuseCategories } from '@/interface/interfaces';
 import { useGetCart } from '@/redux/fetures/cartSlice';
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
@@ -18,24 +19,7 @@ function Header() {
   const state=useGetCart();
   const session=useSession();
   const [isShowMenu,setIsShowMenu]=useState(false);
-  const [categories,setCategories]=useState<Icategories[]>([]);
-  const [isLoading,setIsloading]=useState(false);
-  useEffect(()=>{
-    const customFetch=async()=>{
-      try {
-        if(!categories?.length){
-          setIsloading(true);
-          const response=await fetch("/api/book/categories");
-          const data =await response.json();
-          setCategories(data.data);
-          setIsloading(false);
-        }
-      } catch {
-        toast.error("مشکلی در برقراری ارتباط");
-      }
-  }
-  customFetch();
-  },[categories])
+  const {categories,isLoading}=useCategories() as IuseCategories;
   return (
     <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg'>
         <ul className='flex items-center gap-2'>

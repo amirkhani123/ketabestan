@@ -2,11 +2,11 @@
 import { signOut } from 'next-auth/react'
 import React, { useEffect } from 'react'
 
-function SignOut() {
+function SignOutPage() {
     useEffect(()=>{
         signOut({callbackUrl:"/"});
     },[]);
 return <p>درحال خروج از حساب کاربری ...</p>
 }
 
-export default SignOut
+export default SignOutPage

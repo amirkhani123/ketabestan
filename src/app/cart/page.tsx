@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 
 
-async function page() {
+async function CartPage() {
         await connectDB();
         const session=await getServerSession(authOptions);
         if(!session){
@@ -20,4 +20,4 @@ async function page() {
   )
 }
 
-export default page
+export default CartPage

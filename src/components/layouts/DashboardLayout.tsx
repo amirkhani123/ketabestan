@@ -3,7 +3,6 @@ import { BiCategory } from "react-icons/bi";
 import { FaRegEdit } from "react-icons/fa";
 import { FaReceipt, FaRegCircleUser, FaUserLarge } from "react-icons/fa6";
 import { IoIosAddCircleOutline } from "react-icons/io";
-import { MdOutlineShoppingBag } from "react-icons/md";
 import { TbLogout } from "react-icons/tb";
 interface IUser { _id: string; username: string; role: string; createdAt: Date; updatedAt: Date; } 
 interface IProps { user: IUser; children: React.ReactNode}
@@ -22,7 +21,6 @@ function DashboardLayout({
           {user.role ==="ADMIN" ? (<>
             <li className=" my-hover hover:opacity-65"><Link href="/dashboard/add-book" className="flex items-center gap-1"> <IoIosAddCircleOutline  /> ثبت کتاب</Link></li>
             <li className="my-2 my-hover hover:opacity-65"><Link href="/dashboard/moderateBooks" className="flex items-center gap-1"><FaRegEdit />  مدریت کتاب ها</Link></li>
-            <li className="my-2 my-hover hover:opacity-65"><Link href="/dashboard/orders" className="flex items-center gap-1"><MdOutlineShoppingBag /> سفارش ها</Link></li>
             <li className=" my-hover mb-2 hover:opacity-65"><Link href="/dashboard/category" className="flex items-center gap-1"> <BiCategory />دسته بندی ها</Link></li>
           </>): (
             <>

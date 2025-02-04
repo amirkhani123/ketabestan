@@ -8,7 +8,7 @@ interface PageProps {
   searchParams:Promise<string>,
 }
 
-async function page({params}:PageProps) {
+async function ModerateBooksEditPage({params}:PageProps) {
     const {bookId}=await params;
     await connectDB();
     let book = await BookM.findOne({_id:bookId});
@@ -18,4 +18,4 @@ async function page({params}:PageProps) {
   )
 }
 
-export default page
+export default ModerateBooksEditPage

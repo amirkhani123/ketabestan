@@ -35,7 +35,7 @@ function SignInT() {
     }
   return (
     <div className='w-full  flex items-center justify-center'>
-    <form className='w-[470] h-[523] bg-white rounded-[40px] p-1 px-3 flex items-center flex-col  border-gray-200'>
+    <form className='w-[470px] h-[523px] bg-white rounded-[40px] p-1 px-3 flex items-center flex-col  border-gray-200'>
         <Image src="/images/logo.png" alt='image.png' width={100} height={100} className='w-[95px] mt-4 mb-2'/>
         <p className='text-xl font-extralight mb-10'>ورود</p>
         <input type='text' placeholder='نام کاربری' name='username' className='my-input' value={formValue.username} onChange={changeHandler} required minLength={8} />

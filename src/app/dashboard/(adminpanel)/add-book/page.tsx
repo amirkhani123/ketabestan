@@ -1,6 +1,6 @@
 import AddBookT from "@/components/template/AddBookT"
 
-async function AddBook() {
+async function AddBookPage() {
 
   return (
     <>
@@ -9,4 +9,4 @@ async function AddBook() {
   )
 }
 
-export default AddBook
+export default AddBookPage

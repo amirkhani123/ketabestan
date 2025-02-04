@@ -2,11 +2,11 @@ import SignInT from '@/components/template/SignInT'
 
 import React from 'react'
 
-function SignIn() {
+function SignInPage() {
   
   return (
     <SignInT/>
   )
 }
 
-export default SignIn
+export default SignInPage

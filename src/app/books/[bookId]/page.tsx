@@ -10,7 +10,7 @@ interface PageProps {
   searchParams:Promise<string>,
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function BooksPageDetails({ params }: PageProps) {
   
   try {
     const { bookId } =await params;

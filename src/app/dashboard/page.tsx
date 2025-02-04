@@ -1,5 +1,5 @@
 
-function page() {
+function DashboardPage() {
   return (
     <div>
         <p>
@@ -12,4 +12,4 @@ function page() {
   )
 }
 
-export default page
+export default DashboardPage

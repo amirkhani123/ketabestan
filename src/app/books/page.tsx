@@ -6,7 +6,7 @@ import { IBook } from "@/interface/interfaces";
 interface Iprops{
 searchParams:Promise<{category:string}>
 }
-async function page({searchParams}:Iprops) {
+async function BooksPage({searchParams}:Iprops) {
     let allBooks=[];
     const {category}=await searchParams;
         await connectDB();
@@ -20,4 +20,4 @@ async function page({searchParams}:Iprops) {
         ) 
 }
 
-export default page
+export default BooksPage

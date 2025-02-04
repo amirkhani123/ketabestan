@@ -1,9 +1,9 @@
 import ModerateBooksT from "@/components/template/ModerateBooksT"
 
-function page() {
+function ModerateBooksPage() {
   return (
    <ModerateBooksT/> 
   )
 }
 
-export default page
+export default ModerateBooksPage

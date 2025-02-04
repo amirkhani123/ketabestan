@@ -48,4 +48,8 @@ interface IstateCard{
     totalQty:number,
     totalPrice:number
 }
-export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard}
+interface IuseCategories{
+    categories:Icategories[],
+    isLoading:boolean
+}
+export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard,IuseCategories}

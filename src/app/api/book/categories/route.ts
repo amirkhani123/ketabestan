@@ -6,8 +6,8 @@ export async function GET() {
     try{
         await connectDB()
         const categories=await Mcategory.find();
-       return NextResponse.json({data:categories},{status:200})
+       return NextResponse.json(categories,{status:200});
     }catch{
-        return NextResponse.json({message:"مشکلی در سمت سرور رخ داده است"},{status:500})
+        return NextResponse.json({error:"مشکلی در سمت سرور رخ داده است"},{status:500})
     }
 }

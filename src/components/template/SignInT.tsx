@@ -34,10 +34,10 @@ function SignInT() {
       }
     }
   return (
-    <div className='w-full  flex items-center justify-center'>
-    <form className='w-[470px] h-[523px] bg-white rounded-[40px] p-1 px-3 flex items-center flex-col  border-gray-200'>
-        <Image src="/images/logo.png" alt='image.png' width={100} height={100} className='w-[95px] mt-4 mb-2'/>
-        <p className='text-xl font-extralight mb-10'>ورود</p>
+    <div className='w-full flex items-center justify-center'>
+    <form className='w-[470px] h-[523px] bg-white rounded-[40px] p-1 px-3 flex items-center flex-col  border-gray-200 max-sm:w-[330px] max-sm:h-[420px]   '>
+        <Image src="/images/logo.png" alt='image.png' width={100} height={100} className='w-[95px] mt-4 mb-2 max-sm:w-[75px]  max-sm:mb-1'/>
+        <p className='text-xl font-extralight mb-10 max-sm:font-light  max-sm:mb-2'>ورود</p>
         <input type='text' placeholder='نام کاربری' name='username' className='my-input' value={formValue.username} onChange={changeHandler} required minLength={8} />
         <div className='w-full relative'>
             <input type={isShow? "text":"password"} placeholder='رمز عبور' name='password' className='my-input' value={formValue.password} onChange={changeHandler} required minLength={8}/>
@@ -45,7 +45,7 @@ function SignInT() {
               {isShow ? <IoEyeOffOutline size={25} />:<IoEyeOutline size={25}/> }
             </button>
         </div>
-        <button type="submit" className="my-submit my-hover disabled:opacity-50" onClick={submitHandler} disabled={isLoading} >
+        <button type="submit" className="my-submit my-hover disabled:opacity-50 max-sm:mt-3" onClick={submitHandler} disabled={isLoading} >
           {isLoading ? " درحال ورود ... ":"ورود"}
         </button>
         <Link href="/signup" className="text-red-600 mt-4 text-right w-full text-sm">ایجاد حساب کاربری!</Link>

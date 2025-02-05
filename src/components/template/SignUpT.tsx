@@ -33,9 +33,9 @@ function SignUpT() {
   }
   return (
     <div className="w-full  flex items-center justify-center">
-        <form onSubmit={submitHandler} className="bg-white p-1 px-3 rounded-[40px] flex items-center flex-col w-[460px] h-[596px] border border-gray-200 "  >
-            <Image src="/images/logo.png" alt="logo.png" width={80} height={84} className="mt-4 mb-2 w-[95px]" />
-            <p className="font-extralight text-lg mb-16 ">فرم ثبت نام</p>
+        <form onSubmit={submitHandler} className="bg-white p-1 px-3 rounded-[40px] flex items-center flex-col w-[460px] h-[596px] border border-gray-200 max-sm:w-[345px] max-sm:h-[455px] "  >
+            <Image src="/images/logo.png" alt="logo.png" width={80} height={84} className="mt-4 mb-2 w-[95px] max-sm:w-[75px]  max-sm:mb-1 max-sm:mt-2" />
+            <p className="font-extralight text-lg mb-16 max-sm:font-light  max-sm:mb-2 ">فرم ثبت نام</p>
             <input type="text" placeholder="نام کاربری" className="my-input" name="username" required minLength={5}  />
             <div className="w-full relative">
             <input type={isShow? "text":"password"} placeholder="رمز عبور" className="my-input " name="password" required minLength={8} />
@@ -45,7 +45,7 @@ function SignUpT() {
             </div>
             <input type={isShow? "text":"password"} placeholder="تکرار رمز عبور" className="my-input" name="repassword" required minLength={8} />
              <Submit textPrimary="ثبت نام" textSecond="درحال ثبت نام ..."/>
-            <Link href="/signin" className="text-red-600 mt-4 text-right w-full text-sm">حساب کاربری دارید ؟</Link>
+            <Link href="/signin" className="text-red-600 mt-4  text-right w-full text-sm max-sm:mt-2">حساب کاربری دارید ؟</Link>
         </form>
     </div>
   )

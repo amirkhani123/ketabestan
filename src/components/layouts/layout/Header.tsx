@@ -23,7 +23,7 @@ function Header() {
   const {categories,isLoading}=useCategories() as IuseCategories;
   const [isMenuHamburger,setIsMenuHamburger]=useState(false);
   return (
-    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-1'>
+    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-[5px]'>
         <ul className='flex items-center gap-2 max-sm:hidden'>
             <li className='my-hover header-li'><Link href="/">صفحه اصلی</Link></li>
             <li className='my-hover header-li'><Link href="/books"> کتاب ها</Link></li>

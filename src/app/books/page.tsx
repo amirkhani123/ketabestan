@@ -3,8 +3,6 @@ import connectDB from "@/connections/connectDB"
 import BookM from "@/models/BookM";
 import BooksT from "@/components/template/BooksT"
 import { IBook } from "@/interface/interfaces";
-import { Suspense } from "react";
-import Loading from "@/components/ui/Loading";
 interface Iprops{
 searchParams:Promise<{category:string}>
 }

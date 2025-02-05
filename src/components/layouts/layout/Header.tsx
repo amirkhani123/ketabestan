@@ -7,25 +7,27 @@ import { IuseCategories } from '@/interface/interfaces';
 import { useGetCart } from '@/redux/fetures/cartSlice';
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import {  useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { GoSignIn } from 'react-icons/go';
-import { IoIosArrowDown } from 'react-icons/io';
-import { IoBagHandle } from 'react-icons/io5';
+import { IoIosArrowDown, IoIosArrowUp, IoMdMenu } from 'react-icons/io';
+import { IoBagHandle, IoHomeOutline } from 'react-icons/io5';
 import { MdOutlineAccountCircle } from 'react-icons/md';
-import { TbLogout } from 'react-icons/tb';
+import { TbLogout,TbBooks, TbCategory } from 'react-icons/tb';
+
 
 function Header() {
   const state=useGetCart();
   const session=useSession();
   const [isShowMenu,setIsShowMenu]=useState(false);
   const {categories,isLoading}=useCategories() as IuseCategories;
+  const [isMenuHamburger,setIsMenuHamburger]=useState(false);
   return (
-    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg'>
-        <ul className='flex items-center gap-2'>
+    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-0'>
+        <ul className='flex items-center gap-2 max-sm:hidden'>
             <li className='my-hover header-li'><Link href="/">صفحه اصلی</Link></li>
             <li className='my-hover header-li'><Link href="/books"> کتاب ها</Link></li>
-            <li  onMouseEnter={()=>setIsShowMenu(true)} onMouseLeave={()=>{setIsShowMenu(false)}}><Link href="/" className='my-icons'> دسته بندی  <IoIosArrowDown /> </Link>
+            <li  onMouseEnter={()=>setIsShowMenu(true)} onMouseLeave={()=>{setIsShowMenu(false)}}><Link href="/" className='my-icons'> دسته بندی <IoIosArrowDown/>  </Link>
             {isShowMenu && (
             <ul className="absolute bg-red-500 shadow-2xl shadow-red-300 rounded-xl w-44 min-h-22 p-2 opacity-0 animate-show">
               {
@@ -34,8 +36,26 @@ function Header() {
             </ul>
             )}
             </li>
-            
         </ul>
+        <button className='max-sm:inline-block hidden' onClick={()=>setIsMenuHamburger(true)}><IoMdMenu size={45} /></button>
+       {isMenuHamburger && (
+        <div className='absolute h-[100vh] w-40 rounded-l-md bg-white top-0  right-[-5px] z-10 opacity-0 animate-show'>
+              <button onClick={()=>setIsMenuHamburger(false)} className='text-red-500 font-semibold text-2xl p-2 w-full text-left'>X</button>
+              <ul className='p-1 px-2 list-decimal'>
+              <li onClick={()=>setIsMenuHamburger(false)}><Link href="/" className='my-icons gap-2 justify-normal mr-1 text-black text-lg'><IoHomeOutline size={22} /> صفحه اصلی</Link></li>
+            <li onClick={()=>setIsMenuHamburger(false)}><Link href="/books" className='my-icons gap-2 justify-normal mr-1 text-black text-lg'> <TbBooks /> کتاب ها</Link></li>
+            <li  onClick={()=>setIsShowMenu(!isShowMenu)} ><p className=' text-black font-light text-lg but-menu my-icons gap-2' > <TbCategory /> دسته بندی {isShowMenu? <IoIosArrowUp /> :<IoIosArrowDown />}</p>      
+            {isShowMenu && (
+            <ul className="mr-2" onClick={()=>setIsMenuHamburger(false)}>
+              {
+                isLoading ? (<Loading/>):(   <CategoriesLi categories={categories} />)
+              }
+            </ul>
+            )}
+            </li>
+              </ul>
+        </div>
+       )}
         <div>
              {session.status=="authenticated" ? (<div className='flex gap-1 items-center  rounded-lg px-1'>
                 <Link href="/cart" className='p-1 cursor-pointer flex justify-center items-center bg-white rounded-md text-center my-hover hover:opacity-60 relative'>

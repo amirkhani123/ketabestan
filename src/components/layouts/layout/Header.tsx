@@ -42,9 +42,9 @@ function Header() {
         <div className='absolute h-[100vh] w-40 rounded-l-md bg-white top-0  right-[-5px] z-10 opacity-0 animate-show'>
               <button onClick={()=>setIsMenuHamburger(false)} className='text-red-500 font-semibold text-2xl p-2 w-full text-left'>X</button>
               <ul className='p-1 px-2 list-decimal'>
-              <li onClick={()=>setIsMenuHamburger(false)}><Link href="/" className='my-icons gap-2 justify-normal mr-1 text-black text-lg'><IoHomeOutline size={22} /> صفحه اصلی</Link></li>
-            <li onClick={()=>setIsMenuHamburger(false)}><Link href="/books" className='my-icons gap-2 justify-normal mr-1 text-black text-lg'> <TbBooks /> کتاب ها</Link></li>
-            <li  onClick={()=>setIsShowMenu(!isShowMenu)} ><p className=' text-black font-light text-lg but-menu my-icons gap-2' > <TbCategory /> دسته بندی {isShowMenu? <IoIosArrowUp /> :<IoIosArrowDown />}</p>      
+              <li onClick={()=>setIsMenuHamburger(false)}><Link href="/" className='my-icons gap-2 justify-normal mr-1 text-text-color text-lg'><IoHomeOutline size={22} /> صفحه اصلی</Link></li>
+            <li onClick={()=>setIsMenuHamburger(false)}><Link href="/books" className='my-icons gap-2 justify-normal mr-1 text-text-color text-lg'> <TbBooks /> کتاب ها</Link></li>
+            <li  onClick={()=>setIsShowMenu(!isShowMenu)} ><p className=' text-text-color font-light text-lg but-menu my-icons gap-2' > <TbCategory /> دسته بندی {isShowMenu? <IoIosArrowUp /> :<IoIosArrowDown />}</p>      
             {isShowMenu && (
             <ul className="mr-2" onClick={()=>setIsMenuHamburger(false)}>
               {

@@ -3,6 +3,8 @@ import connectDB from "@/connections/connectDB"
 import BookM from "@/models/BookM";
 import BooksT from "@/components/template/BooksT"
 import { IBook } from "@/interface/interfaces";
+import { Suspense } from "react";
+import Loading from "@/components/ui/Loading";
 interface Iprops{
 searchParams:Promise<{category:string}>
 }
@@ -16,7 +18,7 @@ async function BooksPage({searchParams}:Iprops) {
           allBooks=allBooks.filter((book:IBook)=>book.category==category);
         }
         return (
-          <BooksT allBooks={allBooks} />
+            <BooksT allBooks={allBooks} />
         ) 
 }
 

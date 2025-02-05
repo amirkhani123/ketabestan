@@ -15,14 +15,14 @@ export default async function BooksPageDetails({ params }: PageProps) {
   try {
     const { bookId } =await params;
     await connectDB();
-    const myBook = await BookM.findOne({ _id: bookId });
-
+    let myBook = await BookM.findOne({ _id: bookId });
+     myBook=JSON.parse(JSON.stringify(myBook));  
     if (!myBook) {
       return <div className="flex items-center justify-center w-full h-[65vh]">کتاب مورد نظر یافت نشد.</div>;
     }
 
     return (
-      <div className="flex items-center justify-center w-full h-[65vh]">
+      <div className="flex items-center justify-center w-full h-[65vh] max-sm:flex-col max-sm:h-full">
         <BookDetailsT myBook={myBook as IBook} />
       </div>
     );

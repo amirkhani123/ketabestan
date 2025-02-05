@@ -13,7 +13,7 @@ function SideBarBooks() {
    }
   
   return (
-    <div className="w-[13%] rounded-md shadow-gray flex items-center h-52 flex-col ">
+    <div className="w-[13%] rounded-md shadow-gray flex items-center h-52 flex-col  max-sm:hidden ">
         <p className="my-2 font-light text-base">فیلتر ها</p>
         <ul className="">
               {

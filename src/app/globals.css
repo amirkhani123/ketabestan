@@ -90,5 +90,12 @@ body{
 .my-submit{
   @apply w-full p-2  bg-[#f21055] rounded-xl text-white text-lg mt-8 font-light border hover:text-[#f21055] hover:bg-white hover:border-[#f21055]  outline-none disabled:opacity-65 my-hover 
 }
-
 }
+/* استفاده از انیمیشن ورود */
+.my-details[open] ul {
+  @apply animate-show opacity-0
+}
+
+
+
+

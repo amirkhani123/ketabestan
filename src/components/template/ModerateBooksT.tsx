@@ -39,10 +39,10 @@ function ModerateBooksT() {
     <div>
         {isLoading ? <Loading/>:(<div className="flex flex-col gap-1">
             {allBooks?.map((item:IBook)=>(
-                 <div key={item._id} className=" w-[40%] flex items-center justify-between rounded-lg p-1 shadow-gray ">
+                 <div key={item._id} className=" w-[40%] flex items-center justify-between rounded-lg p-1 shadow-gray max-sm:w-full ">
                     <Image src={item.image} width={50} height={50} alt="image.png" />
-                    <p>{item.name}</p>
-                    <div className="flex gap-3 items-center">
+                    <p className="max-sm:text-xs">{item.name}</p>
+                    <div className="flex gap-3 items-center max-sm:gap-1">
                     <Link href={`/dashboard/moderateBooks/${item._id}`} className="but-green">ویرایش</Link>
                     <button className="my-submit text-base mt-0 rounded-md p-1 px-2" onClick={()=>deleteHandler(item._id as string)}>حذف</button>
                     </div>

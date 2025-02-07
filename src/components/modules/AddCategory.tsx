@@ -13,8 +13,8 @@ function AddCategory() {
      }
     }} >
         <p className="my-icons w-fit"><IoIosAddCircleOutline />اضافه کردن دسته بندی جدید</p>
-        <input type="text" placeholder="دسته بندی جدید ..." className="form-input-book outline-none " name="category" />
-        <button className="but-green">اضافه کردن </button>
+        <input type="text" placeholder="دسته بندی جدید ..." className="form-input-book outline-none max-sm:my-2 " name="category" />
+        <button className="but-green ">اضافه کردن </button>
     </form>
   )
 }

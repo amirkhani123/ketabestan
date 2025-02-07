@@ -54,7 +54,7 @@ function InputsAccount({userId,information}:Iprops) {
   <label className='lable-input'>شماره تماس : <span className='text-red-500'>*</span></label>
 </div>
 <div className='relative w-80 mt-5'>
-  <input type='text' className='my-input' required name='address' value={formData.address} onChange={changeHandler}/>
+  <input type='text' className='my-input max-sm:h-[150px] max-sm:w-[350px]' required name='address' value={formData.address} onChange={changeHandler}/>
   <label className='lable-input'>آدرس : <span className='text-red-500'>*</span></label>
 </div>
 <Submit textPrimary="ثبت اطلاعات" textSecond="درحال ثبت اطلاعات ..."/>

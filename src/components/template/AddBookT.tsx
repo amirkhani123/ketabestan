@@ -3,15 +3,16 @@ import DatePicker from "react-multi-date-picker"
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import { CldUploadWidget } from "next-cloudinary";
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import toast from "react-hot-toast";
 import CategoriesLable from "../ui/CategoriesLable";
 import Loading from "../ui/Loading";
-import { IApi, IBook, Icategories } from "@/interface/interfaces";
+import { IApi, IBook, IuseCategories } from "@/interface/interfaces";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useCategories } from "@/hooks/hooks";
 
 interface IcloudinaryUploadWidgetInfo {
     secure_url: string;
@@ -28,22 +29,8 @@ function AddBookT({data}:{data?:IBook}) {
         image:"",
         category:""
     });
-    const [categories,setCategories]=useState<Icategories[]>();
-    useEffect(()=>{
-        if(data){
-            setFormvalue(data);
-        }
-        async function fetchData(){
-           const response=await fetch("/api/book/categories");
-           const result=await response.json();
-           if(result.data){
-               setCategories(result.data);
-           }else{
-            toast.error(result.message);
-           }
-        }
-        fetchData();
-    },[router,data])
+    
+    const {categories,isLoading}=useCategories() as IuseCategories;
     const changeEvent=(e:React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.name=="category"){
             setFormvalue(formValue=>({...formValue,[e.target.name]:e.target.id}));
@@ -92,7 +79,7 @@ function AddBookT({data}:{data?:IBook}) {
         <label className="font-light text-sm" htmlFor="datepublish"> دسته بندی :</label>
     <div className="flex items-center gap-2">
        {
-        categories?.length ?(  categories?.map((item)=>(
+       !isLoading ?(  categories?.map((item)=>(
             <CategoriesLable name={item.name} key={item._id} changeEvent={changeEvent} />
         ))) :(
            <Loading/>

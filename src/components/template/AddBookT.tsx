@@ -11,14 +11,12 @@ import CategoriesLable from "../ui/CategoriesLable";
 import Loading from "../ui/Loading";
 import { IApi, IBook, IuseCategories } from "@/interface/interfaces";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useCategories } from "@/hooks/hooks";
 
 interface IcloudinaryUploadWidgetInfo {
     secure_url: string;
   }
 function AddBookT({data}:{data?:IBook}) {
-    const router=useRouter();
     const [formValue,setFormvalue]=useState({
         name:"",
         price:0,

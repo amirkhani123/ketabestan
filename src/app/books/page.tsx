@@ -1,22 +1,30 @@
 "use server"
-import connectDB from "@/connections/connectDB"
-import BookM from "@/models/BookM";
 import BooksT from "@/components/template/BooksT"
 import { IBook } from "@/interface/interfaces";
 interface Iprops{
 searchParams:Promise<{category:string}>
 }
+export  async function  generateMetadata({searchParams}:Iprops){
+  const {category} = await searchParams;
+  if(category){
+    return {
+      title:`کتابستان | ${category}`
+    }
+  }
+  return{
+    title:"کتابستان | کتاب ها"
+  }
+}
+  
 async function BooksPage({searchParams}:Iprops) {
-    let allBooks=[];
     const {category}=await searchParams;
-        await connectDB();
-        allBooks= await BookM.find();
-        allBooks=JSON.parse(JSON.stringify(allBooks));
+    const res=await fetch(`${process.env.MY_URL}/api/book`,{next:{revalidate:3600}});
+      let  {data}= await res.json();
         if(category){
-          allBooks=allBooks.filter((book:IBook)=>book.category==category);
+          data=data.filter((book:IBook)=>book.category==category);
         }
         return (
-            <BooksT allBooks={allBooks} />
+            <BooksT allBooks={data} />
         ) 
 }
 

@@ -6,6 +6,11 @@ import { authOptions } from "@/utils/auth";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 
+export async function generateMetadata(){
+  return {
+    title:"کتابستان | سبد خرید"
+  }
+}
 
 async function CartPage() {
         await connectDB();

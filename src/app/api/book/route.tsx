@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(){
     try {
+        console.log("fetch :)")
         await connectDB();
         const books=await BookM.find();
        return NextResponse.json({data:books},{status:200});

@@ -4,6 +4,7 @@ import Link from "next/link"
 import Loading from "../ui/Loading";
 import { useSearchParams } from "next/navigation";
 import { useCategories } from "@/hooks/hooks";
+
 function SideBarBooks() {
     const{categories,isLoading}=useCategories()as IuseCategories;
    const [searchParams]=useSearchParams();
@@ -12,6 +13,7 @@ function SideBarBooks() {
        selectCategory=searchParams[1];
    }
   
+
   return (
     <div className="w-[13%] rounded-md shadow-gray flex items-center h-52 flex-col  max-sm:hidden ">
         <p className="my-2 font-light text-base">فیلتر ها</p>

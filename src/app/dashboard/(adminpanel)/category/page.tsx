@@ -1,14 +1,16 @@
-"use server"
+"use client"
 import AddCategory from "@/components/modules/AddCategory";
 import ShowCategory from "@/components/modules/ShowCategory";
-import Mcategory from "@/models/Mcategory"
+import Loading from "@/components/ui/Loading";
+import { useCategories } from "@/hooks/hooks";
+import { IuseCategories } from "@/interface/interfaces";
 
-async function CategoryPage() {
+ function CategoryPage() {
     
-    const categories= JSON.parse(JSON.stringify( await Mcategory.find()));
-  return (
+    const {categories}=useCategories() as IuseCategories ;
+     return (
    <>
-   {categories.length ? ( <ShowCategory categories={categories}/>):  <p className="text-lg font-light">هیچ دسته بندی یافت نشد ! </p> }
+   {categories ? ( <ShowCategory categories={categories}/>): <Loading/> }
    <AddCategory/>
    </>
   )

@@ -6,6 +6,11 @@ import UserM from "@/models/UserM";
 import Link from "next/link";
 import connectDB from "@/connections/connectDB";
 import { authOptions } from "@/utils/auth";
+export async function generateMetadata(){
+  return {
+    title:"کتابستان |  پنل کاربری "
+  }
+}
 export default async function layout({
     children,
   }: Readonly<{

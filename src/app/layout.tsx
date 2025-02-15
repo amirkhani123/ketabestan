@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import vazirmatn from "@/utils/fonts";
+import myFonts from "@/utils/fonts";
 import Providers from "@/providers/providers";
 export const metadata: Metadata = {
   title: "کتابستان",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body
-        className={` ${vazirmatn.className} antialiased bg-gray-100`}
+        className={` ${myFonts.className} antialiased bg-gray-100`}
       >
         <Providers >
             {children}

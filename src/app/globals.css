@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   --background: #ffffff;
   --foreground: #ff0000;
@@ -28,6 +29,7 @@ body{
   background-color: rgb(255, 0, 0);
   border-radius: 10px;
 }
+
 @layer components{
 .my-input{
   @apply w-full p-2 px-3  border border-red-500 bg-white rounded-[15px]  placeholder:text-[#28282880] outline-none my-1  text-lg h-[53px]

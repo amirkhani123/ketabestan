@@ -5,8 +5,10 @@ import Loading from '@/components/ui/Loading';
 import {  useCategories } from '@/hooks/hooks';
 import { IuseCategories } from '@/interface/interfaces';
 import { useGetCart } from '@/redux/fetures/cartSlice';
+import clsx from 'clsx';
 import { signOut, useSession } from 'next-auth/react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import { useState } from 'react'
 import toast from 'react-hot-toast';
 import { GoSignIn } from 'react-icons/go';
@@ -14,19 +16,22 @@ import { IoIosArrowDown, IoIosArrowUp, IoMdMenu } from 'react-icons/io';
 import { IoBagHandle, IoHomeOutline } from 'react-icons/io5';
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { TbLogout,TbBooks, TbCategory } from 'react-icons/tb';
-
-
 function Header() {
   const state=useGetCart();
   const session=useSession();
   const [isShowMenu,setIsShowMenu]=useState(false);
   const {categories,isLoading}=useCategories() as IuseCategories;
   const [isMenuHamburger,setIsMenuHamburger]=useState(false);
+  const pathName=usePathname();
   return (
     <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-[5px]'>
         <ul className='flex items-center gap-2 max-sm:hidden'>
-            <li className='my-hover header-li'><Link href="/">صفحه اصلی</Link></li>
-            <li className='my-hover header-li'><Link href="/books"> کتاب ها</Link></li>
+            <li className={clsx('my-hover header-li',{
+              'header-li-static':pathName==="/"
+            })} ><Link href="/">صفحه اصلی</Link></li>
+            <li className={clsx('my-hover header-li',{
+             'header-li-static':pathName==="/books"
+            })}><Link href="/books"> کتاب ها</Link></li>
             <li  onMouseEnter={()=>setIsShowMenu(true)} onMouseLeave={()=>{setIsShowMenu(false)}}><Link href="/" className='my-icons'> دسته بندی <IoIosArrowDown/>  </Link>
             {isShowMenu && (
             <ul className="absolute bg-red-500 shadow-2xl shadow-red-300 rounded-xl w-44 min-h-22 p-2 opacity-0 animate-show">

@@ -1,16 +1,13 @@
-
-import Banner from '@/components/modules/Banner'
-import React from 'react'
-import WhyT from './WhyT'
-import WhatBuyT from './WhatBuyT'
-
+import Banner from "../modules/home/Banner"
+import WhatBuy from "../modules/home/WhatBuy"
+import Why from "../modules/home/Why"
 
 function HomePageT() {
   return (
    <>
-   <Banner/>
-   <WhyT/>
-   <WhatBuyT/>
+    <Banner/>
+    <Why/>
+    <WhatBuy/>
    </>
   )
 }

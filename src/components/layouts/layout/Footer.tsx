@@ -7,7 +7,7 @@ import { TbWorldWww } from "react-icons/tb"
 function Footer() {
   return ( 
     <div className='text-white bg-red-600 w-full   rounded-t-lg py-1 px-2 mt-5 flex  justify-between max-sm:px-1'>
-         <div >
+         <div>
           <p className="font-light text-lg"> چرا ما ؟</p>
           <ul className="list-disc list-inside max-sm:mr-1 max-sm:list-none" >
             <li className="max-sm:text-base ">قیمت مناسب</li>

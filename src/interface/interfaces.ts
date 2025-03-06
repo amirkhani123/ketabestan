@@ -52,4 +52,9 @@ interface IuseCategories{
     categories:Icategories[],
     isLoading:boolean
 }
-export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard,IuseCategories}
+interface IQuestionsDB{
+    id:number
+    question:string,
+    answer:string
+   }
+export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard,IuseCategories,IQuestionsDB}

@@ -2,6 +2,7 @@ import connectDB from "@/connections/connectDB";
 import BookM from "@/models/BookM";
 import { authOptions } from "@/utils/auth";
 import { getServerSession } from "next-auth/next";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 export async function PUT(req, { params }) {
     try {
@@ -25,6 +26,7 @@ export async function PUT(req, { params }) {
             myBook.image = image;
             myBook.category = category;
             await myBook.save();
+            revalidatePath("/books")
             return NextResponse.json({ message: "با موفقیت ویرایش شد 😀", status: "success" }, { status: 200 });
         }else{
             return NextResponse.json({ message: "شما دسترسی ندارید", status: "failed" }, { status: 401 });
@@ -43,6 +45,7 @@ export async function DELETE(req, { params }) {
             await connectDB();
             if (req.method === "DELETE") {
                 await BookM.deleteOne({ _id: bookId });
+                revalidatePath("/books")
                 return NextResponse.json({ message: "با موفقیت حذف شد 😀", status: "success" }, { status: 200 });
             }
         } else {

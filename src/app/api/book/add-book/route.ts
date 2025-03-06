@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import connectDB from "@/connections/connectDB";
 import BookM from "@/models/BookM";
 import { authOptions } from "@/utils/auth";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
     try {
@@ -19,6 +20,7 @@ export async function POST(request: NextRequest) {
             status:400,
         })
         await BookM.create(data);
+        revalidatePath("/books")
         return NextResponse.json({message:"با موفقیت ثبت شد :)",status:"success"},{
             status:201,
         })         

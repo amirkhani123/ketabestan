@@ -57,4 +57,12 @@ interface IQuestionsDB{
     question:string,
     answer:string
    }
-export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard,IuseCategories,IQuestionsDB}
+   interface IOrder{
+    _id:string,
+    books:IBook[],
+    createAt:Date,
+    username:string,
+    address:string,
+    status:string
+   }
+export type {Iformdata,IuserData,Iuser,Icategories,IBook,IApi,IstateCard,IuseCategories,IQuestionsDB,IOrder}

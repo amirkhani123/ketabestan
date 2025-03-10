@@ -53,7 +53,6 @@ const cartSlice=createSlice({
             state.books=[];
             state.totalPrice=0;
             state.totalQty=0;
-            toast.success("سفارش شما با موفقیت ثبت شد 🌹");
         }
     }
 });

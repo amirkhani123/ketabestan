@@ -38,7 +38,7 @@ function CartT({myUser}:{myUser:Iuser}) {
               }
             }}> {isChecked ? "درحال ثبت نهایی ...":"ثبت نهایی خرید"}</button>):(<Link className="but-green text-center" href={`/dashboard/account/${myUser._id}`}>ثبت نهایی اطلاعات</Link>)}
         </div>
-        {isChecked && <ModalCheckOutT setIsChecked={setIsChecked} myUser={myUser}/>}
+        {isChecked && <ModalCheckOutT setIsChecked={setIsChecked} myUser={myUser} />}
     </div>
 
   )

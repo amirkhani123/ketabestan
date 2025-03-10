@@ -21,12 +21,13 @@ function DashboardLayout({
         <ul>
           {user.role ==="ADMIN" ? (<>
             <li className=" my-hover hover:opacity-65"><Link href="/dashboard/add-book" className="flex items-center gap-1"> <IoIosAddCircleOutline  /> ثبت کتاب</Link></li>
-            <li className="my-2 my-hover hover:opacity-65"><Link href="/dashboard/moderateBooks" className="flex items-center gap-1"><FaRegEdit />  مدریت کتاب ها</Link></li>
-            <li className=" my-hover mb-2 hover:opacity-65"><Link href="/dashboard/category" className="flex items-center gap-1"> <BiCategory />دسته بندی ها</Link></li>
+            <li className="my-1 my-hover hover:opacity-65"><Link href="/dashboard/moderateBooks" className="flex items-center gap-1"><FaRegEdit />  مدریت کتاب ها</Link></li>
+            <li className="my-1 my-hover hover:opacity-65"><Link href="/dashboard/orders" className="flex items-center gap-1"><FaReceipt size={20} />   سفارش ها</Link></li>
+            <li className=" my-hover mb-1 hover:opacity-65"><Link href="/dashboard/category" className="flex items-center gap-1"> <BiCategory />دسته بندی ها</Link></li>
           </>): (
             <>
              <li className="my-hover hover:opacity-65"><Link className="flex items-center gap-1" href={`/dashboard/account/${user._id}}`}><FaUserLarge size={20}/> حساب کاربری </Link></li>
-             <li className="my-2 my-hover hover:opacity-65"><Link className="flex items-center gap-1" href="/"> <FaReceipt size={20} /> سفارشات</Link></li>
+             <li className="my-2 my-hover hover:opacity-65"><Link className="flex items-center gap-1" href="/dashboard/orders-user"> <FaReceipt size={20} /> سفارشات</Link></li>
              </>
           ) } 
             <li><Link className="flex items-center gap-1 text-red-600 my-hover hover:opacity-65" href="/dashboard/signout"> <TbLogout size={25} /> خروج</Link></li>
@@ -40,11 +41,12 @@ function DashboardLayout({
           {user.role ==="ADMIN" ? (<>
             <li className=" my-hover hover:opacity-65"><Link href="/dashboard/add-book" className="flex items-center gap-1"> <IoIosAddCircleOutline  /> ثبت کتاب</Link></li>
             <li className="my-2 my-hover hover:opacity-65"><Link href="/dashboard/moderateBooks" className="flex items-center gap-1"><FaRegEdit />  مدریت کتاب ها</Link></li>
+            <li className="my-2 my-hover hover:opacity-65"><Link href="/dashboard/orders" className="flex items-center gap-1"><FaReceipt size={20} />   سفارش ها</Link></li>
             <li className=" my-hover mb-2 hover:opacity-65"><Link href="/dashboard/category" className="flex items-center gap-1"> <BiCategory />دسته بندی ها</Link></li>
           </>): (
             <>
              <li className="my-hover hover:opacity-65"><Link className="flex items-center gap-1" href={`/dashboard/account/${user._id}}`}><FaUserLarge size={20}/> حساب کاربری </Link></li>
-             <li className="my-2 my-hover hover:opacity-65"><Link className="flex items-center gap-1" href="/"> <FaReceipt size={20} /> سفارشات</Link></li>
+             <li className="my-2 my-hover hover:opacity-65"><Link className="flex items-center gap-1" href="/dashboard/orders-user"> <FaReceipt size={20} /> سفارشات</Link></li>
              </>
           ) } 
             <li><Link className="flex items-center gap-1 text-red-600 my-hover hover:opacity-65" href="/dashboard/signout"> <TbLogout size={25} /> خروج</Link></li>

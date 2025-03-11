@@ -1,18 +1,17 @@
 import connectDB from "@/connections/connectDB";
-import Morders from "@/models/orders";
 import UserM from "@/models/UserM";
 import { authOptions } from "@/utils/auth";
 import { getServerSession } from "next-auth/next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 interface Iinputs{
-    params:{username:string}
+    params:Promise<{username:string}>
 }
-export async function GET(res,{params}:Iinputs) {
+export async function GET(res:NextRequest,{params}:Iinputs) {
     
    try {
     const session=await getServerSession(authOptions);
     if(!session)return NextResponse.json({message:"ابتدا لاگین کنید",type:"failed"},{status:401})
-        const {username}= params;
+        const {username}= await params;
     if(!username)return NextResponse.json({message:"اطلاعات کامل نیست ",type:"failed"},{status:402})
     await connectDB()
        const [user]=await UserM.aggregate([

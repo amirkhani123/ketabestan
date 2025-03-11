@@ -9,7 +9,7 @@ interface Iprops{
 }
 function RenderOrder({item}:Iprops) {
   const [isLoading,setIsLoading]=useState(false)
-  const statusHandler=(status)=>{
+  const statusHandler=(status:string)=>{
      switch (status) {
       case "init":
         return "درحال آماده سازی"
@@ -18,8 +18,7 @@ function RenderOrder({item}:Iprops) {
           case "arrived":
         return "دریافت شده"
       default:
-        "سفارش درست ثبت نشده است"
-        break;
+       return "سفارش درست ثبت نشده است"
      }
   }
   const isPathname=usePathname()==="/dashboard/orders"

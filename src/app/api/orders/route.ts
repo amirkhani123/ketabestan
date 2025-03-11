@@ -27,7 +27,7 @@ export async function GET() {
         return NextResponse.json({message:"مشکلی سمت سرور رخ داده است",status:"failed"},{status:500});
     }
 }
-export async function PATCH(params:NextResponse) {
+export async function PATCH(params:NextRequest) {
     try {
         await connectDB();
         const {id}=await params.json();

@@ -7,7 +7,7 @@ function MainLayout({children}) {
   return (
    <div className='container m-auto'>
    <Header/>
-   <div className='min-h-[70vh]'>
+   <div className='min-h-[100vh]'>
    {children}
    </div>
    <Footer/>

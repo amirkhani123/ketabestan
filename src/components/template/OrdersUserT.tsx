@@ -16,9 +16,11 @@ function OrdersUserT({username}:Iprops) {
         </div>
     </div>) : (<div>
       <h3 className="my-2 font-normal text-lg">سفارشات</h3>
-      {data.data.map((i:IOrder)=>(
+      {data?.data.length ? (data?.data.map((i:IOrder)=>(
         <RenderOrder key={i._id} item={i}/>
-      ))}
+      ))): (
+        <p className="w-full font-medium text-lg text-center mt-5">تاکنون ازما خریدی نکردید 🥲</p>
+      )}
     </div>)}
     </>
   )

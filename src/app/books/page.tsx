@@ -18,7 +18,7 @@ export  async function  generateMetadata({searchParams}:Iprops){
   
 async function BooksPage({searchParams}:Iprops) {
     const {category}=await searchParams;
-    const res=await fetch(`${process.env.MY_URL}/api/book`,{next:{revalidate:3600}});
+    const res=await fetch(`${process.env.MY_URL}/api/book`,{next:{revalidate:604800}});
       let  {data}= await res.json();
         if(category){
           data=data.filter((book:IBook)=>book.category==category);

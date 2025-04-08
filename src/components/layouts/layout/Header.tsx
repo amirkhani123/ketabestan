@@ -24,7 +24,7 @@ function Header() {
   const [isMenuHamburger,setIsMenuHamburger]=useState(false);
   const pathName=usePathname();
   return (
-    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-5 mb-3 bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-[5px]'>
+    <header className='w-full h-12 flex items-center justify-between py-1 px-2 mt-2 mb-2  bg-red-600 text-white rounded-lg max-sm:mt-0  max-sm:rounded-none max-sm:p-[5px]'>
         <ul className='flex items-center gap-2 max-sm:hidden'>
             <li className={clsx('my-hover header-li',{
               'header-li-static':pathName==="/"
@@ -34,7 +34,7 @@ function Header() {
             })}><Link href="/books"> کتاب ها</Link></li>
             <li  onMouseEnter={()=>setIsShowMenu(true)} onMouseLeave={()=>{setIsShowMenu(false)}}><Link href="/" className='my-icons'> دسته بندی <IoIosArrowDown/>  </Link>
             {isShowMenu && (
-            <ul className="absolute bg-red-500 shadow-2xl shadow-red-300 rounded-xl w-44 min-h-22 p-2 opacity-0 animate-show">
+            <ul className="absolute bg-red-500 z-20 shadow-2xl shadow-red-300 rounded-xl w-44 min-h-22 p-2 opacity-0 animate-show">
               {
                 isLoading ? (<Loading/>):(   <CategoriesLi categories={categories} />)
               }

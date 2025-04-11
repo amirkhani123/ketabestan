@@ -1,40 +1,20 @@
 "use client"
-import Loading from "@/components/ui/Loading";
 import { IBook } from "@/interface/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
- function SliderHome(){
- const [books,setBooks]=useState<IBook[]>([])
- const [isLoading,setIsLoading]=useState(false);
+ function SliderHome({data}:{data:IBook[]}){
  const [indexSlider,setIndexSlider]=useState(0)
  useEffect(() => {
     const interval = setInterval(() => {
-      setIndexSlider((prevIndex) => (prevIndex + 1) % books.length); 
+      setIndexSlider((prevIndex) => (prevIndex + 1) % data.length); 
     }, 6000);
     return () => clearInterval(interval);
-  }, [books]); 
- useEffect(()=>{
-    const fetchBook=async()=>{
-        setIsLoading(true)
-        const res=await fetch(`/api/book`,{cache:"force-cache"});
-        const result=await res.json() 
-        setIsLoading(false)
-        result.data.splice(4)
-        if(result.data){
-            setBooks(result.data)
-        }
-    }
-    fetchBook()
- },[])
-
+  }, [data]);
     return(
         <div className="w-full h-[50vh] relative bg-gray-200 rounded-xl p-2 overflow-hidden max-sm:h-[25vh] max-sm:p-0 ">
-            {isLoading ? 
-                <Loading/>
-                :
-                books.map((item:IBook,index)=>(
+               {data.map((item:IBook,index)=>(
                     <div  key={item._id} className={`w-full h-full   cursor-default absolute inset-0 my-hover p-2 flex  justify-between ${indexSlider === index ? "  opacity-100 z-10" :"  opacity-0 z-0 "} `}>
                         <div className="mt-5">
                             <h1 className="font-medium my-1 text-3xl max-sm:text-base">{item.name}</h1>
@@ -45,10 +25,9 @@ import { useEffect, useState } from "react";
                         </div>
                         <Image src={item.image} alt="book.png" width={380} height={350} className=" rounded-lg max-sm:size-40"/>
                     </div>
-                ))
-            }
+                ))}
             <div className="flex items-center gap-3 absolute left-1/2 bottom-3 ">
-            {books.map((item:IBook,index)=>(
+            {data.map((item:IBook,index)=>(
                 <button key={item._id} className={`w-5 h-1 max-sm:hidden  cursor-pointer z-20  rounded-lg ${indexSlider === index ? "bg-black":" bg-gray-600"}`} onClick={()=>setIndexSlider(index)}></button>
             ))}
             </div>

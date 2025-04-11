@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux'
 interface Iprops{
     setIsChecked:React.Dispatch<React.SetStateAction<boolean>>,
-    myUser:Iuser
+    myUser:Iuser,
 }
 function ModalCheckOutT({setIsChecked,myUser}:Iprops) {
     const dispatch=useDispatch();

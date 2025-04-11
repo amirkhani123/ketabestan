@@ -11,6 +11,10 @@ import toast from "react-hot-toast";
 function CartT({myUser}:{myUser:Iuser}) {
     const state=useGetCart() as IstateCard;
     const [isChecked,setIsChecked]=useState(false);
+    const [discount,setDiscont]=useState({
+      text:"",
+      valid:false
+    });
   return (
     <div className="flex justify-between max-sm:flex-col max-sm:items-center ">
         <div className="w-[70%] min-h-[250px] p-1 shadow-gray rounded-lg max-sm:w-full" >{!state.books.length ? ( <p className="w-full text-center font-light text-lg mt-3">هیچ کتابی یافت نشد !</p>): (
@@ -27,16 +31,33 @@ function CartT({myUser}:{myUser:Iuser}) {
         )}</div>
         <div className="w-[15%] min-h-[250px] p-1 shadow-gray rounded-lg ml-5 flex flex-col justify-between max-sm:w-full max-sm:mt-2 max-sm:mx-2 max-sm:min-h-[80px] ">
           <div>
-            <p className="flex justify-between items-center font-normal text-lg">مبلغ کل: <span className="ml-2 font-normal text-lg">{state.totalPrice.toLocaleString("fa-ir")}</span></p>
             <p className="flex justify-between items-center mt-2 font-normal text-lg">تعداد کل: <span className="ml-2 font-normal text-lg">{state.totalQty.toLocaleString("fa-ir")}</span></p>
+            {discount.valid &&  <p className="flex justify-between items-center font-normal text-lg">مبلغ تخفیف: <span className="ml-2 font-normal text-lg">{(state.totalPrice / 2 ).toLocaleString("fa-ir")}</span></p> }
+            <p className="flex justify-between items-center font-normal text-lg">مبلغ کل: <span className="ml-2 font-normal text-lg">{discount.valid ? (state.totalPrice / 2 ).toLocaleString("fa-ir"): state.totalPrice.toLocaleString("fa-ir")}</span></p>
           </div>
-            {myUser.firstname ? ( <button className="my-submit" onClick={()=>{
+            {myUser.firstname ? ( 
+              <>
+             <div className="w-full flex items-center gap-2">
+              <button className="w-1/3  rounded-md but-green" onClick={()=>{
+                if(discount.text.toLocaleLowerCase()==="opening50"){
+                  toast.success("با موفقیت ثبت شد :)")
+                  setDiscont((discount)=>({...discount,["valid"]:true}))
+                }else{
+                  toast.error("کد تخفیف معتبر نیست ):")
+                  setDiscont((discount)=>({...discount,["valid"]:false}))
+                }
+              }}>بررسی </button>
+              <input type="text"  value={discount.text} onChange={(e)=>setDiscont((discount)=>({...discount,["text"]:e.target.value}))} className="w-2/3 p-1 bg-neutral-300 outline-none border-none text-gray-700 rounded-md placeholder:text-gray-700" placeholder="کد تخفیف ..."/>
+            </div>
+              <button className="my-submit" onClick={()=>{
               if(state.books.length){
                 setIsChecked(true);
               }else{
                 toast.error("ثبت خرید شما خالی است 😶");
               }
-            }}> {isChecked ? "درحال ثبت نهایی ...":"ثبت نهایی خرید"}</button>):(<Link className="but-green text-center" href={`/dashboard/account/${myUser._id}`}>ثبت نهایی اطلاعات</Link>)}
+            }}> {isChecked ? "درحال ثبت نهایی ...":"ثبت نهایی خرید"}</button>
+              </>
+            ):(<Link className="but-green text-center" href={`/dashboard/account/${myUser._id}`}>ثبت نهایی اطلاعات</Link>)}
         </div>
         {isChecked && <ModalCheckOutT setIsChecked={setIsChecked} myUser={myUser} />}
     </div>

@@ -17,10 +17,6 @@ const myFonts=localFont({
         path:"../../public/fonts/Vazirmatn-Bold.woff2",
         style:"normal",
         weight:"500",
-      },{
-        path:"../../public/fonts/NotoNastaliqUrdu-Bold.ttf",
-        style:"normal",
-        weight:"700",
       }
     ]
   });
